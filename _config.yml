@@ -3,3 +3,6 @@ theme: minima
 title: Test page for me
 description: Add a supertab
 author: Justin
+
+include:
+  - assets
