@@ -1,10 +1,11 @@
 
+     
       <script type="module">
         import { createPaygateExperience } from "https://js.sbx.supertab.co/v2/experiences.js";
 
         const { show } = await createPaygateExperience({
-          clientId: "test_client.1482aaab-3734-4e12-b6dd-38daf89e3123",
-          experienceId: "experience.6a205014-a962-4a35-9d9d-1b45e959ba23",
+          clientId: "test_client.446dc09c-acec-487b-89e2-f8a0784285da",
+          experienceId: "experience.8f8673bc-4a4d-4fb8-a7d6-0d6810c99199",
           onPurchaseCompleted: () => {
             //insert your code to grant user access
             console.log("Paygate completed!");
@@ -14,7 +15,7 @@
             console.log("Paygate canceled!");
 
             // Redirect to the paygateRedirectUrl
-            window.location.href = "https://cabusto.github.io";
+            window.location.href = "https://cabusto.github.io/test-supertab";
           },
           onPriorEntitlement: () => {
             //insert your code to handle when user has prior entitlement
@@ -30,4 +31,5 @@
         // For custom behavior, use methods like "hide", "toggle", "isShowing", or "destroy".
         show();
       </script>
+    
     
