@@ -9,7 +9,7 @@
 <body>
 
   <!-- Include Paygate Script -->
-  
+
      
       <script type="module">
         import { createPaygateExperience } from "https://js.sbx.supertab.co/v2/experiences.js";
@@ -26,12 +26,11 @@
             console.log("Paygate canceled!");
 
             // Redirect to the paygateRedirectUrl
-            window.location.href = "https://cabusto.github.io/test-supertab/";
+            window.location.href = "https://cabusto.github.io";
           },
           onPriorEntitlement: () => {
             //insert your code to handle when user has prior entitlement
             console.log("Paygate: User has prior entitlement. Showing the content.");
-            
           },
           onError: (error) => {
             //insert your code to handle an unexpected error
@@ -43,9 +42,6 @@
         // For custom behavior, use methods like "hide", "toggle", "isShowing", or "destroy".
         show();
       </script>
-    
-    
-   
     
    {{ content }}
 </body>
