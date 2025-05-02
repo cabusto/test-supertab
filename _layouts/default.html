@@ -10,14 +10,12 @@
 
   <!-- Include Paygate Script -->
 
-     
-     
       <script type="module">
         import { createPaygateExperience } from "https://js.supertab.co/v2/experiences.js";
 
         const { show } = await createPaygateExperience({
-          clientId: "test_client.90c3d330-db62-4f40-af8e-e3a840a634ec",
-          experienceId: "experience.b828aa21-079c-44f0-aed4-9ddf7f2f6674",
+          clientId: "test_client.1f83d9ab-967f-4b5d-b7fc-df47a5fb4f66",
+          experienceId: "experience.149c4607-2aa3-4d64-ad50-5ce50fa70032",
           onPurchaseCompleted: () => {
             //insert your code to grant user access
             console.log("Paygate completed!");
