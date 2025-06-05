@@ -8,39 +8,40 @@
 </head>
 <body>
 
-  <!-- Include Paygate Script -->
+ 
+    <script type="module">
+      import { Supertab } from "https://js.supertab.co/v3/sdk.js";
 
-      <script type="module">
-        import { createPaygateExperience } from "https://js.supertab.co/v2/experiences.js";
+      // Initialize Supertab client
+      const supertabClient = new Supertab({ clientId: "live_client.7fa31d20-7b80-4fc7-b9f5-8aa0d9c09c47" });
 
-        const { show } = await createPaygateExperience({
-          clientId: "test_client.1f83d9ab-967f-4b5d-b7fc-df47a5fb4f66",
-          experienceId: "experience.149c4607-2aa3-4d64-ad50-5ce50fa70032",
-          onPurchaseCompleted: () => {
-            //insert your code to grant user access
-            console.log("Paygate completed!");
-          },
-          onPurchaseCanceled: () => {
-            //insert your code to handle when purchase is not completed
-            console.log("Paygate canceled!");
+      // Create the paygate
+      const { initialState, show } = await supertabClient.createPaygate({
+        experienceId: "experience.c6f3c3df-a359-40ca-9fb4-1b76b167fffb"
+      });
 
-            // Redirect to the paygateRedirectUrl
-            window.location.href = "https://cabusto.github.io/test-supertab";
-          },
-          onPriorEntitlement: () => {
-            //insert your code to handle when user has prior entitlement
-            console.log("Paygate: User has prior entitlement. Showing the content.");
-          },
-          onError: (error) => {
-            //insert your code to handle an unexpected error
-            console.error("Paygate error!", error);
-          },
-        })
+      // Check if the user has prior entitlement
+      if (initialState.priorEntitlement) {
+        // Insert your code to handle when user has prior entitlement when accessing the page
+        console.log("User has prior entitlement", initialState.priorEntitlement);
+      } else {
+        // Show the paygate
+        const { priorEntitlement, purchase, purchasedOffering } = await show();
 
-        // The "show()" method call is an example of how to trigger the Paygate.
-        // For custom behavior, use methods like "hide", "toggle", "isShowing", or "destroy".
-        show();
-      </script>
+        if (priorEntitlement) {
+          // Insert your code to handle when user has prior entitlement
+          console.log("User has prior entitlement", priorEntitlement);
+        } else if (purchase && purchase.status === "completed") {
+          // Insert your code to handle when user purchases an offering
+          console.log("Purchase completed!", purchase);
+        } else {
+          // Insert your code to handle when user abandons the flow without purchase or prior entitlement
+          console.log("Purchase canceled!");
+          window.location.href = "https://cabusto.github.io";
+        }
+      }
+    </script>
+  
     
     
    {{ content }}
