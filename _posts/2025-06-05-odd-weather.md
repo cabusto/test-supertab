@@ -1,3 +1,9 @@
+---
+layout: default
+title: "Sunny"
+date: 2025-06-05
+---
+
 # Sunny in St. John's
 
 ## Summer has come early
