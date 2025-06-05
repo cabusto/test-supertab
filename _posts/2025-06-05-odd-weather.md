@@ -21,6 +21,6 @@ Occasionally, bouts of wintry precipitation, including snow, can occur until at 
 While summer temperatures generally rise, Newfoundland can still experience cool days and even fog, especially along the southern coast due to prevailing southwest winds chilled by the ocean. 
 In summary, the combination of the cold Labrador Current, prevailing wind patterns, and proximity to the Arctic results in a cooler-than-expected climate in Newfoundland and Labrador during May and June.
 
-But here it is, [June 5th](https://climate.weather.gc.ca/climate_data/hourly_data_e.html?hlyRange=2012-03-20%7C2025-06-04&dlyRange=2012-03-20%7C2025-06-04&mlyRange=%7C&StationID=50089&Prov=NL&urlExtension=_e.html&searchType=stnProv&optLimit=specDate&StartYear=1840&EndYear=2025&selRowPerPage=25&Line=35&lstProvince=NL&timeframe=1&time=LST&time=LST&Year=2025&Month=6&Day=4#), and the temperatures have hit 26 degress with a humidex score of 32!
+But here it is, [June 5th](https://climate.weather.gc.ca/climate_data/hourly_data_e.html?hlyRange=2012-03-20%7C2025-06-04&dlyRange=2012-03-20%7C2025-06-04&mlyRange=%7C&StationID=50089&Prov=NL&urlExtension=_e.html&searchType=stnProv&optLimit=specDate&StartYear=1840&EndYear=2025&selRowPerPage=25&Line=35&lstProvince=NL&timeframe=1&time=LST&time=LST&Year=2025&Month=6&Day=4#), and the temperatures have hit 26 degrees with a humidex score of 32!
 
 ![St. John's Harbour with a cruise ship departing](../assets/img/June42025-harbour.JPG)
