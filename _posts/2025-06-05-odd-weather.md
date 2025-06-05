@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Sunny"
+title: "odd-weather"
 date: 2025-06-05
 ---
 
