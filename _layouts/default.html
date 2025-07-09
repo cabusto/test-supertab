@@ -9,11 +9,12 @@
 <body>
 
  
+    
     <script type="module">
-      import { Supertab } from "https://js.supertab.co/v3/sdk.js";
+      import { Supertab } from "https://js.sbx.supertab.co/v3/supertab.js";
 
       // Initialize Supertab client
-      const supertabClient = new Supertab({ clientId: "live_client.c655bd2d-c517-48b3-8843-39a10530fce1" });
+      const supertabClient = new Supertab({ clientId: "test_client.67504753-c45b-4029-a04e-f089fbad3f3f" });
 
       // Create the paygate
       const { initialState, show } = await supertabClient.createPaygate({
@@ -41,6 +42,7 @@
         }
       }
     </script>
+  
   
     
     
