@@ -13,11 +13,11 @@
       import { Supertab } from "https://js.supertab.co/v3/sdk.js";
 
       // Initialize Supertab client
-      const supertabClient = new Supertab({ clientId: "live_client.7fa31d20-7b80-4fc7-b9f5-8aa0d9c09c47" });
+      const supertabClient = new Supertab({ clientId: "live_client.c655bd2d-c517-48b3-8843-39a10530fce1" });
 
       // Create the paygate
       const { initialState, show } = await supertabClient.createPaygate({
-        experienceId: "experience.c6f3c3df-a359-40ca-9fb4-1b76b167fffb"
+        experienceId: "experience.e46cf8ed-fc9c-47df-81c8-4d7d20617ffe"
       });
 
       // Check if the user has prior entitlement
@@ -37,7 +37,7 @@
         } else {
           // Insert your code to handle when user abandons the flow without purchase or prior entitlement
           console.log("Purchase canceled!");
-          window.location.href = "https://cabusto.github.io";
+          window.location.href = "https://cabusto.github.io/test-supertab/";
         }
       }
     </script>
