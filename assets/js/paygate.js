@@ -1,1 +1,30 @@
+import { Supertab } from "https://js.sbx.supertab.co/v3/supertab.js";
 
+// Initialize Supertab client
+const supertabClient = new Supertab({ clientId: "test_client.67504753-c45b-4029-a04e-f089fbad3f3f" });
+
+// Create the paygate
+const { initialState, show } = await supertabClient.createPaygate({
+  experienceId: "experience.e46cf8ed-fc9c-47df-81c8-4d7d20617ffe"
+});
+
+// Check if the user has prior entitlement
+if (initialState.priorEntitlement) {
+  // Insert your code to handle when user has prior entitlement when accessing the page
+  console.log("User has prior entitlement", initialState.priorEntitlement);
+} else {
+  // Show the paygate
+  const { priorEntitlement, purchase, purchasedOffering } = await show();
+
+  if (priorEntitlement) {
+    // Insert your code to handle when user has prior entitlement
+    console.log("User has prior entitlement", priorEntitlement);
+  } else if (purchase && purchase.status === "completed") {
+    // Insert your code to handle when user purchases an offering
+    console.log("Purchase completed!", purchase);
+  } else {
+    // Insert your code to handle when user abandons the flow without purchase or prior entitlement
+    console.log("Purchase canceled!");
+    window.location.href = "https://cabusto.github.io/test-supertab/";
+  }
+}
