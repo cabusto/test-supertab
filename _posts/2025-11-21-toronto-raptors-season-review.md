@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "Toronto Raptors 2024-25 Season Review"
 date: 2025-11-21
 ---

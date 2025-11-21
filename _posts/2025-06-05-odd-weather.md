@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "odd-weather"
 date: 2025-06-05
 ---
