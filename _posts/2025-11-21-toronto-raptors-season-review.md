@@ -6,13 +6,13 @@ date: 2025-11-21
 
 # Toronto Raptors 2024-25 Season: A Challenging Year
 
-As we approach the end of the 2024-25 NBA season, it's time to reflect on how the Toronto Raptors have performed. Unfortunately, this hasn't been the triumphant season that Raptors fans were hoping for.
+Looking back at the completed 2024-25 NBA season, it's time to reflect on how the Toronto Raptors performed. Unfortunately, this wasn't the triumphant season that Raptors fans were hoping for.
 
 ![Raptors Season Logo](/assets/img/raptors-season-logo.jpg)
 
 ## Season Record and Standings
 
-The Raptors finished the season with a **30-52 record**, placing them 3rd in the Atlantic Division and 11th in the Eastern Conference. This meant the team missed the playoffs for another year, a disappointing outcome for a franchise that has historically been competitive in the Eastern Conference.
+The Raptors finished the season with a **30-52 record**, placing them 3rd out of 5 teams in the Atlantic Division and 11th in the Eastern Conference. This meant the team missed the playoffs for another year, a disappointing outcome for a franchise that has historically been competitive in the Eastern Conference.
 
 ## Team Performance Analysis
 
