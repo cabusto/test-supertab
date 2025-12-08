@@ -13,7 +13,9 @@
     {% include head-custom.html %}
   </head>
   <body>
+    {% unless page.url == "/" %}
     <script type="module" src="{{ '/assets/js/paygate.js' | relative_url }}"></script>
+    {% endunless %}
     
     <a id="skip-to-content" href="#content">Skip to the content.</a>
 
