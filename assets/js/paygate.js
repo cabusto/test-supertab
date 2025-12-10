@@ -1,4 +1,4 @@
-import { Supertab } from "https://js.sbx.supertab.co/v3/supertab.js";
+import { Supertab } from "https://js.supertab.co/v3/supertab.js";
 
 // Initialize Supertab client
 const supertabClient = new Supertab({ clientId: "live_client.33008cc7-bf54-4ef6-bc53-617b28ca6892" });
