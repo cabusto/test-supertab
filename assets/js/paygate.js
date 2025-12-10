@@ -1,11 +1,11 @@
 import { Supertab } from "https://js.sbx.supertab.co/v3/supertab.js";
 
 // Initialize Supertab client
-const supertabClient = new Supertab({ clientId: "test_client.be1f96ce-8ba8-42df-9615-72cfde00b051" });
+const supertabClient = new Supertab({ clientId: "live_client.33008cc7-bf54-4ef6-bc53-617b28ca6892" });
 
 // Create the paywall
 const { initialState, show } = await supertabClient.createPaywall({
-experienceId: "experience.73aab530-814a-4d3f-88db-49b9bf2734ba"
+experienceId: "experience.dd293323-29aa-4375-9e3f-9125792b7b19"
 });
 
 // Check if the user has prior entitlement
