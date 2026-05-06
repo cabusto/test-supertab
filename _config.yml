@@ -1,11 +1,22 @@
-remote_theme: pages-themes/cayman@v0.2.0
+remote_theme: StartBootstrap/startbootstrap-clean-blog-jekyll
 plugins:
   - jekyll-remote-theme
-  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-paginate
 
 title: Test page for me
 description: Add a supertab
 author: Justin
+email: ""
+baseurl: ""
+url: "https://cabusto.github.io"
 
-include:
-  - assets
+# Social profiles (fill in as desired)
+twitter_username:
+github_username: cabusto
+facebook_username:
+instagram_username:
+linkedin_username:
+
+paginate: 5
+paginate_path: "/posts/page:num/"
