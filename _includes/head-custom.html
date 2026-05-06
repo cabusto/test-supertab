@@ -1,4 +1,5 @@
 <!-- Add custom styles or metadata here -->
+<meta name="base-url" content="{{ '/' | relative_url }}">
 <style>
   .back-to-home {
     display: inline-block;
@@ -36,6 +37,34 @@
   
   .post-list a {
     font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .content-blurred {
+    filter: blur(6px);
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  .blur-overlay span {
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1.25rem;
     font-weight: bold;
   }
 </style>
