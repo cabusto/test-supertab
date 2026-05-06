@@ -37,7 +37,7 @@
     <div id="blur-overlay" class="blur-overlay" role="status" aria-live="polite"><span>Purchase to read this article</span></div>
     {% endunless %}
     <main id="content" class="main-content" role="main">
-      <div id="content-inner"{% unless page.url == "/" %} class="content-blurred"{% endunless %}>
+      <div id="content-inner"{% unless page.url == "/" %} class="content-blurred" inert aria-hidden="true"{% endunless %}>
       {{ content }}
 
       <footer class="site-footer">
