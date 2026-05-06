@@ -11,12 +11,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
     {% include head-custom.html %}
-  </head>
-  <body>
     {% unless page.url == "/" %}
+    <link rel="preconnect" href="https://js.sbx.supertab.co">
+    <link rel="dns-prefetch" href="https://js.sbx.supertab.co">
+    <link rel="modulepreload" href="https://js.sbx.supertab.co/v3/supertab.js">
     <script type="module" src="{{ '/assets/js/paygate.js' | relative_url }}"></script>
     {% endunless %}
-    
+  </head>
+  <body>
     <a id="skip-to-content" href="#content">Skip to the content.</a>
 
     <header class="page-header" role="banner">
@@ -31,7 +33,10 @@
       {% endif %}
     </header>
 
-    <main id="content" class="main-content" role="main">
+    <main id="content" class="main-content{% unless page.url == "/" %} content-blurred{% endunless %}" role="main">
+      {% unless page.url == "/" %}
+      <div id="blur-overlay" class="blur-overlay" role="alert" aria-live="polite"><span>Purchase to read this article</span></div>
+      {% endunless %}
       {{ content }}
 
       <footer class="site-footer">

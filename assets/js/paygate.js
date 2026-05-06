@@ -1,5 +1,18 @@
  import { Supertab } from "https://js.sbx.supertab.co/v3/supertab.js";
 
+      // Blur/unblur helpers
+      const blurContent = () => {
+        document.getElementById("content")?.classList.add("content-blurred");
+        const overlay = document.getElementById("blur-overlay");
+        if (overlay) overlay.style.display = "flex";
+      };
+
+      const unblurContent = () => {
+        document.getElementById("content")?.classList.remove("content-blurred");
+        const overlay = document.getElementById("blur-overlay");
+        if (overlay) overlay.style.display = "none";
+      };
+
       // Initialize Supertab client
       const supertabClient = new Supertab({ clientId: "test_client.be1f96ce-8ba8-42df-9615-72cfde00b051" });
 
@@ -12,6 +25,7 @@
 if (initialState.priorEntitlement) {
     // Insert your code to handle when user has prior entitlement when accessing the page
     console.log("User has prior entitlement", initialState.priorEntitlement);
+    unblurContent();
 } else {
     // Show the paywall
     const showPaywall = async () => {
@@ -20,9 +34,11 @@ if (initialState.priorEntitlement) {
     if (priorEntitlement) {
         // Insert your code to handle when user has prior entitlement
         console.log("User has prior entitlement", priorEntitlement);
+        unblurContent();
     } else if (purchase && purchase.status === "completed") {
         // Insert your code to handle when user purchases an offering
         console.log("Purchase completed!", purchase);
+        unblurContent();
     } else {
         // Insert your code to handle when user abandons the flow without purchase or prior entitlement
         console.log("Purchase canceled!");
@@ -34,5 +50,10 @@ if (initialState.priorEntitlement) {
 await showPaywall()
 
 // Handle page show event to cover bfcache scenarios
-addEventListener("pageshow", async (e) => e.persisted && showPaywall());
+addEventListener("pageshow", async (e) => {
+    if (e.persisted) {
+        blurContent();
+        await showPaywall();
+    }
+});
 }
