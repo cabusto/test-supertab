@@ -12,9 +12,9 @@
     <![endif]-->
     {% include head-custom.html %}
     {% unless page.url == "/" %}
-    <link rel="preconnect" href="https://js.sbx.supertab.co">
+    <link rel="preconnect" href="https://js.sbx.supertab.co" crossorigin>
     <link rel="dns-prefetch" href="https://js.sbx.supertab.co">
-    <link rel="modulepreload" href="https://js.sbx.supertab.co/v3/supertab.js">
+    <link rel="modulepreload" href="https://js.sbx.supertab.co/v3/supertab.js" crossorigin>
     <script type="module" src="{{ '/assets/js/paygate.js' | relative_url }}"></script>
     {% endunless %}
   </head>
@@ -35,7 +35,7 @@
 
     <main id="content" class="main-content{% unless page.url == "/" %} content-blurred{% endunless %}" role="main">
       {% unless page.url == "/" %}
-      <div id="blur-overlay" class="blur-overlay" role="alert" aria-live="polite"><span>Purchase to read this article</span></div>
+      <div id="blur-overlay" class="blur-overlay" role="status"><span>Purchase to read this article</span></div>
       {% endunless %}
       {{ content }}
 
