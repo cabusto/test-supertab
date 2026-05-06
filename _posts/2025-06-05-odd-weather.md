@@ -1,7 +1,9 @@
 ---
 layout: post
 title: "odd-weather"
+subtitle: "26 degrees and a humidex of 32 in St. John's — in June!"
 date: 2025-06-05
+background: '/assets/img/June42025-harbour.JPG'
 ---
 
 # Sunny in St. John's

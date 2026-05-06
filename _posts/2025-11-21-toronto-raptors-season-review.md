@@ -1,7 +1,9 @@
 ---
 layout: post
 title: "Toronto Raptors 2024-25 Season Review"
+subtitle: "A tough year for the North — but reasons for optimism ahead"
 date: 2025-11-21
+background: '/assets/img/raptors-season-logo.jpg'
 ---
 
 # Toronto Raptors 2024-25 Season: A Challenging Year
