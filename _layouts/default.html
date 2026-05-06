@@ -35,7 +35,7 @@
 
     <main id="content" class="main-content{% unless page.url == "/" %} content-blurred{% endunless %}" role="main">
       {% unless page.url == "/" %}
-      <div id="blur-overlay" class="blur-overlay" role="alert" aria-live="polite"><span>Purchase to read this article</span></div>
+      <div id="blur-overlay" class="blur-overlay" role="status"><span>Purchase to read this article</span></div>
       {% endunless %}
       {{ content }}
 
