@@ -1,59 +1,60 @@
- import { Supertab } from "https://js.sbx.supertab.co/v3/supertab.js";
+import { Supertab } from "https://js.sbx.supertab.co/v3/supertab.js";
 
-      // Blur/unblur helpers
-      const blurContent = () => {
-        document.getElementById("content")?.classList.add("content-blurred");
-        const overlay = document.getElementById("blur-overlay");
-        if (overlay) overlay.style.display = "flex";
-      };
+// Blur/unblur helpers
+const blurContent = () => {
+  document.getElementById("content-inner")?.classList.add("content-blurred");
+  const overlay = document.getElementById("blur-overlay");
+  if (overlay) overlay.style.display = "flex";
+};
 
-      const unblurContent = () => {
-        document.getElementById("content")?.classList.remove("content-blurred");
-        const overlay = document.getElementById("blur-overlay");
-        if (overlay) overlay.style.display = "none";
-      };
+const unblurContent = () => {
+  document.getElementById("content-inner")?.classList.remove("content-blurred");
+  const overlay = document.getElementById("blur-overlay");
+  if (overlay) overlay.style.display = "none";
+};
 
-      // Initialize Supertab client
-      const supertabClient = new Supertab({ clientId: "test_client.be1f96ce-8ba8-42df-9615-72cfde00b051" });
+// Initialize Supertab client
+const supertabClient = new Supertab({ clientId: "test_client.be1f96ce-8ba8-42df-9615-72cfde00b051" });
 
-      // Create the paywall
-      const { initialState, show } = await supertabClient.createPaywall({
-        experienceId: "experience.73aab530-814a-4d3f-88db-49b9bf2734ba"
-      });
+// Create the paywall
+const { initialState, show } = await supertabClient.createPaywall({
+  experienceId: "experience.73aab530-814a-4d3f-88db-49b9bf2734ba"
+});
 
 // Check if the user has prior entitlement
 if (initialState.priorEntitlement) {
-    // Insert your code to handle when user has prior entitlement when accessing the page
-    console.log("User has prior entitlement", initialState.priorEntitlement);
-    unblurContent();
+  // Insert your code to handle when user has prior entitlement when accessing the page
+  console.log("User has prior entitlement", initialState.priorEntitlement);
+  unblurContent();
 } else {
-    // Show the paywall
-    const showPaywall = async () => {
+  // Show the paywall
+  const showPaywall = async () => {
     const { priorEntitlement, purchase, purchasedOffering } = await show();
 
     if (priorEntitlement) {
-        // Insert your code to handle when user has prior entitlement
-        console.log("User has prior entitlement", priorEntitlement);
-        unblurContent();
+      // Insert your code to handle when user has prior entitlement
+      console.log("User has prior entitlement", priorEntitlement);
+      unblurContent();
     } else if (purchase && purchase.status === "completed") {
-        // Insert your code to handle when user purchases an offering
-        console.log("Purchase completed!", purchase);
-        unblurContent();
+      // Insert your code to handle when user purchases an offering
+      console.log("Purchase completed!", purchase);
+      unblurContent();
     } else {
-        // Insert your code to handle when user abandons the flow without purchase or prior entitlement
-        console.log("Purchase canceled!");
-        window.location.href = "https://cabusto.github.io/test-supertab";
+      // Insert your code to handle when user abandons the flow without purchase or prior entitlement
+      console.log("Purchase canceled!");
+      window.location.href = "https://cabusto.github.io/test-supertab";
     }
-}
+  };
 
-// Initially show the Paywall
-await showPaywall()
+  // Initially show the Paywall
+  await showPaywall();
 
-// Handle page show event to cover bfcache scenarios
-addEventListener("pageshow", async (e) => {
+  // Handle page show event to cover bfcache scenarios
+  addEventListener("pageshow", async (e) => {
     if (e.persisted) {
-        blurContent();
-        await showPaywall();
+      blurContent();
+      await showPaywall();
     }
-});
+  });
 }
+
