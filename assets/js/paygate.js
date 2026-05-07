@@ -4,9 +4,23 @@ const defaultSupertabConfig = {
   experienceId: "experience.73aab530-814a-4d3f-88db-49b9bf2734ba",
 };
 
-const supertabMode = window.SUPERTAB_MODE ?? await new Promise((resolve) => {
-  window.addEventListener("supertabmode:ready", () => resolve(window.SUPERTAB_MODE), { once: true });
-});
+const getSupertabMode = async () => {
+  if (window.SUPERTAB_MODE) {
+    return window.SUPERTAB_MODE;
+  }
+
+  return new Promise((resolve) => {
+    const handleReady = () => resolve(window.SUPERTAB_MODE ?? null);
+
+    window.addEventListener("supertabmode:ready", handleReady, { once: true });
+    if (window.SUPERTAB_MODE) {
+      window.removeEventListener("supertabmode:ready", handleReady);
+      handleReady();
+    }
+  });
+};
+
+const supertabMode = await getSupertabMode();
 const supertabConfig = supertabMode?.getConfig?.() ?? defaultSupertabConfig;
 const { Supertab } = await import(supertabConfig.sdkUrl);
 
