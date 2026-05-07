@@ -3,6 +3,10 @@ const defaultSupertabConfig = {
   clientId: "test_client.be1f96ce-8ba8-42df-9615-72cfde00b051",
   experienceId: "experience.73aab530-814a-4d3f-88db-49b9bf2734ba",
 };
+const allowedSdkUrls = new Set([
+  "https://js.sbx.supertab.co/v3/supertab.js",
+  "https://js.supertab.co/v3/supertab.js",
+]);
 
 const getSupertabMode = async () => {
   if (window.SUPERTAB_MODE) {
@@ -22,7 +26,8 @@ const getSupertabMode = async () => {
 
 const supertabMode = await getSupertabMode();
 const supertabConfig = supertabMode?.getConfig?.() ?? defaultSupertabConfig;
-const { Supertab } = await import(supertabConfig.sdkUrl);
+const sdkUrl = allowedSdkUrls.has(supertabConfig.sdkUrl) ? supertabConfig.sdkUrl : defaultSupertabConfig.sdkUrl;
+const { Supertab } = await import(sdkUrl);
 
 // Blur/unblur helpers
 const blurContent = () => {
