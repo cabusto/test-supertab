@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="{{"/assets/main.css" | relative_url }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
+  <script src="{{ '/assets/js/supertab-mode.js' | relative_url }}" defer></script>
 
   {% if page.layout == "post" %}
   <style>
@@ -52,9 +53,10 @@
       font-weight: bold;
     }
   </style>
+  <link rel="preconnect" href="https://js.supertab.co" crossorigin>
+  <link rel="dns-prefetch" href="https://js.supertab.co">
   <link rel="preconnect" href="https://js.sbx.supertab.co" crossorigin>
   <link rel="dns-prefetch" href="https://js.sbx.supertab.co">
-  <link rel="modulepreload" href="https://js.sbx.supertab.co/v3/supertab.js" crossorigin>
   <script type="module" src="{{ '/assets/js/paygate.js' | relative_url }}"></script>
   {% endif %}
 

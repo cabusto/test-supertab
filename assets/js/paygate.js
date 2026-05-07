@@ -1,4 +1,33 @@
-import { Supertab } from "https://js.sbx.supertab.co/v3/supertab.js";
+const defaultSupertabConfig = {
+  sdkUrl: "https://js.sbx.supertab.co/v3/supertab.js",
+  clientId: "test_client.be1f96ce-8ba8-42df-9615-72cfde00b051",
+  experienceId: "experience.73aab530-814a-4d3f-88db-49b9bf2734ba",
+};
+const allowedSdkUrls = new Set([
+  "https://js.sbx.supertab.co/v3/supertab.js",
+  "https://js.supertab.co/v3/supertab.js",
+]);
+
+const getSupertabMode = async () => {
+  if (window.SUPERTAB_MODE) {
+    return window.SUPERTAB_MODE;
+  }
+
+  return new Promise((resolve) => {
+    const handleReady = () => resolve(window.SUPERTAB_MODE ?? null);
+
+    window.addEventListener("supertabmode:ready", handleReady, { once: true });
+    if (window.SUPERTAB_MODE) {
+      window.removeEventListener("supertabmode:ready", handleReady);
+      handleReady();
+    }
+  });
+};
+
+const supertabMode = await getSupertabMode();
+const supertabConfig = supertabMode?.getConfig?.() ?? defaultSupertabConfig;
+const sdkUrl = allowedSdkUrls.has(supertabConfig.sdkUrl) ? supertabConfig.sdkUrl : defaultSupertabConfig.sdkUrl;
+const { Supertab } = await import(sdkUrl);
 
 // Blur/unblur helpers
 const blurContent = () => {
@@ -25,15 +54,16 @@ const unblurContent = () => {
 
 // Derive site base URL from meta tag set by the layout
 const baseUrl = document.querySelector('meta[name="base-url"]')?.content ?? '/';
+const homeUrl = supertabMode?.withMode?.(baseUrl) ?? baseUrl;
 
 // Initialize Supertab client
-const supertabClient = new Supertab({ clientId: "test_client.be1f96ce-8ba8-42df-9615-72cfde00b051" });
+const supertabClient = new Supertab({ clientId: supertabConfig.clientId });
 
 // Create the paywall
 let initialState, show;
 try {
   ({ initialState, show } = await supertabClient.createPaywall({
-    experienceId: "experience.73aab530-814a-4d3f-88db-49b9bf2734ba"
+    experienceId: supertabConfig.experienceId
   }));
 } catch (err) {
   console.error("Failed to initialize paywall. Please refresh the page or contact support if the issue persists.", err);
@@ -62,7 +92,7 @@ if (initialState.priorEntitlement) {
     } else {
       // Insert your code to handle when user abandons the flow without purchase or prior entitlement
       console.log("Purchase canceled!");
-      window.location.href = baseUrl;
+      window.location.href = homeUrl;
     }
   };
 
@@ -77,4 +107,3 @@ if (initialState.priorEntitlement) {
     }
   });
 }
-
