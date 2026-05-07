@@ -8,7 +8,7 @@ title: Test page for me
 description: Add a supertab
 author: Justin
 email: ""
-baseurl: ""
+baseurl: "/test-supertab"
 url: "https://cabusto.github.io"
 
 # Social profiles (fill in as desired)
