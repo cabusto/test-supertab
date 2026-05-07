@@ -4,7 +4,9 @@ const defaultSupertabConfig = {
   experienceId: "experience.73aab530-814a-4d3f-88db-49b9bf2734ba",
 };
 
-const supertabMode = window.SUPERTAB_MODE;
+const supertabMode = window.SUPERTAB_MODE ?? await new Promise((resolve) => {
+  window.addEventListener("supertabmode:ready", () => resolve(window.SUPERTAB_MODE), { once: true });
+});
 const supertabConfig = supertabMode?.getConfig?.() ?? defaultSupertabConfig;
 const { Supertab } = await import(supertabConfig.sdkUrl);
 

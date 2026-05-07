@@ -108,7 +108,9 @@
 
     const nextLocation = new URL(window.location.href);
     nextLocation.searchParams.set(queryParam, normalizedMode);
-    window.location.href = `${nextLocation.pathname}${nextLocation.search}${nextLocation.hash}`;
+    window.history.replaceState({}, "", `${nextLocation.pathname}${nextLocation.search}${nextLocation.hash}`);
+    updateModeDetails();
+    updateInternalLinks();
   };
 
   window.SUPERTAB_MODE = {
@@ -130,6 +132,8 @@
         setMode(button.dataset.supertabModeToggle);
       });
     });
+
+    window.dispatchEvent(new CustomEvent("supertabmode:ready"));
   };
 
   if (document.readyState === "loading") {
